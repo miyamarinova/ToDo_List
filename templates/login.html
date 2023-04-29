@@ -1,0 +1,21 @@
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<div class="bg-dark login-header">
+    <h1 style="color: white;">Log In</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto content">
+            {% with messages = get_flashed_messages() %}
+            {% if messages: %}
+            {% for message in messages: %}
+            <p style="color: #ed1f9b;"><em>{{ message }}</em></p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {{ wtf.quick_form(form, novalidate=True, button_map={'submit': 'primary'}) }}
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
